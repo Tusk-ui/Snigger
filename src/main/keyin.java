@@ -13,8 +13,24 @@ import java.awt.event.KeyListener;
  */
 public class keyin implements KeyListener{
     
-    public boolean up,down,left,right,restart,anykey,esc = false;
+    
     private gamepanel gamePanel;
+    
+    public boolean up = false;
+    public boolean down = false;
+    public boolean left = false;
+    public boolean right = false;
+    public boolean esc = false;
+    public boolean anykey = false;
+    public boolean restart = false;
+   
+    // New properties for volume control
+    public boolean volumeUp = false;
+    public boolean volumeDown = false;
+    public boolean effectVolumeUp = false;
+    public boolean effectVolumeDown = false;
+    public boolean volumeSettings = false;
+    public boolean flashlightToggle = false;
     
     public keyin(gamepanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -53,8 +69,26 @@ public class keyin implements KeyListener{
          }
         if(code == KeyEvent.VK_ESCAPE){
             esc = true;
-        } 
-    }
+        } if (e.getKeyCode() == KeyEvent.VK_PLUS || e.getKeyCode() == KeyEvent.VK_EQUALS) {
+            volumeUp = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_MINUS) {
+            volumeDown = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            effectVolumeUp = true;
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            effectVolumeDown = true;
+        }
+          anykey = true;
+
+        // Handle volume settings key (V)
+        if (code == KeyEvent.VK_V) {
+            volumeSettings = true;
+        }  if (code == KeyEvent.VK_V) {
+            volumeSettings = false;
+        } if (e.getKeyCode() == KeyEvent.VK_F) {
+            flashlightToggle = true; // Set the flag when 'F' is pressed
+        }
+        }
     
     @Override
     public void keyReleased(KeyEvent e) {
@@ -82,6 +116,14 @@ public class keyin implements KeyListener{
         }
         if(code == KeyEvent.VK_ESCAPE){
             esc = false;
+        }if (e.getKeyCode() == KeyEvent.VK_PLUS || e.getKeyCode() == KeyEvent.VK_EQUALS) {
+            volumeUp = false;
+        } else if (e.getKeyCode() == KeyEvent.VK_MINUS) {
+            volumeDown = false;
+        } else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+            effectVolumeUp = false;
+        } else if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+            effectVolumeDown = false;
         }
          }
     }

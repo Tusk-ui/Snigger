@@ -16,7 +16,7 @@ public class entity {
     public int x,y;
     public int speed;
     BufferedImage up1,down1,left1;
-    public BufferedImage body,tail,uptail,lefttail,rightail,right1;
+    public BufferedImage body,tail,uptail,lefttail,rightail,right1,apple;
     
     public String direction;
 }

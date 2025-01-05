@@ -27,6 +27,7 @@ public class snik extends entity {
         this.gp = gp;
         this.key = key;
         
+        
     }
     
     public void defval(){
@@ -46,6 +47,7 @@ public class snik extends entity {
         left1 = ImageIO.read(getClass().getResourceAsStream("/snake/left.png"));
         
         body = ImageIO.read(getClass().getResourceAsStream("/snake/Snikbody.png"));
+        apple = ImageIO.read(getClass().getResourceAsStream("/snake/apple.png"));
         
         tail = ImageIO.read(getClass().getResourceAsStream("/snake/sniktil.png"));
         uptail = ImageIO.read(getClass().getResourceAsStream("/snake/uptail.png"));
@@ -162,7 +164,14 @@ public class snik extends entity {
         } else {
             // Body segment
             g2.drawImage(body, bodyPart[0], bodyPart[1], gp.tilesize, gp.tilesize, null);
+            
+            drawApple(g2);
     }
 }
    }
+ public void drawApple(Graphics2D g2) {
+    // Draw the apple image at the specified coordinates
+    g2.drawImage(apple, gp.applex, gp.appley, gp.tilesize, gp.tilesize, null);
+    System.out.println("Drawing apple at: (" + gp.applex + ", " + gp.appley + ")");
+}
 }
